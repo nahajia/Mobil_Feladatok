@@ -86,6 +86,21 @@ export default function App() {
         "datum":datum,
         "kesz":0
       })
+      /*
+      function custom_sort(a, b) {
+        return new Date(a.datum).getTime() - new Date(b.datum).getTime();
+      }
+      uj.sort(custom_sort);
+      */
+     /*
+      uj.sort((a, b) => {
+        const dateA = new Date(a.datum);
+        const dateB = new Date(b.datum);
+        return dateA - dateB;
+      });
+      */
+      uj.sort((a, b) => new Date(a.datum) - new Date(b.datum));
+      
       setAdatTomb(uj)
       storeData(uj)
       alert("Sikeres felvitel!")
@@ -101,7 +116,7 @@ export default function App() {
   const valtozikDatum=(event,datum)=>{
     //alert(datum)
     setShow(false)
-    setDatum(datum.getFullYear()+"."+(datum.getMonth()+1)+"."+datum.getDate())
+    setDatum(datum.getFullYear()+"-"+(datum.getMonth()+1)+"-"+datum.getDate())
   }
 
   const befejezVagyVissza=(id)=>{
